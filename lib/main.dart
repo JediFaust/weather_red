@@ -38,6 +38,7 @@ class Body extends StatelessWidget {
 
 Widget _myLayout(BuildContext context) {
   return Column(
+    mainAxisSize: MainAxisSize.min,
     children: [
       _searchBar(),
       _cityDate(context),
@@ -150,32 +151,47 @@ Widget _weeklyForecast() {
         '7-DAY WEATHER FORECAST',
         style: TextStyle(color: Colors.white, fontSize: 16),
       ),
-      ListView.builder(
-          padding: EdgeInsets.all(15),
-          scrollDirection: Axis.horizontal,
-          itemCount: 7,
-          itemBuilder: (BuildContext context, int index) {
-            return SizedBox(
-              width: 150,
-              height: 100,
-              child: Column(
-                children: [
-                  Text('Friday'),
-                  Row(
+      SizedBox(
+        height: 150,
+        child: ListView.builder(
+            padding: EdgeInsets.all(15),
+            scrollDirection: Axis.horizontal,
+            itemCount: 7,
+            itemBuilder: (BuildContext context, int index) {
+              return SizedBox(
+                width: 160,
+                //height: 140,
+                child: Card(
+                  color: Colors.white.withAlpha(120),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text('6 F',
-                          style: TextStyle(color: Colors.white, fontSize: 24)),
-                      Icon(
-                        Icons.wb_sunny_rounded,
-                        color: Colors.white,
-                        size: 36,
+                      Text(
+                        'Friday',
+                        style: TextStyle(color: Colors.white, fontSize: 28),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text('6 F',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 32)),
+                          Icon(
+                            Icons.wb_sunny_rounded,
+                            color: Colors.white,
+                            size: 36,
+                          )
+                        ],
                       )
                     ],
-                  )
-                ],
-              ),
-            );
-          }),
+                  ),
+                ),
+              );
+            }),
+      ),
+      SizedBox(
+        height: 70,
+      ),
     ],
   );
 }
